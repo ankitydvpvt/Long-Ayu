@@ -29,6 +29,6 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
     "**/*.mts"
-  ],
+, "src/Pages/Home/Research.jsx", "src/Pages/Home/team.jsx", "src/Universal/Menu.jsx"  ],
   "exclude": ["node_modules"]
 }
