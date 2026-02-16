@@ -18,7 +18,7 @@ export default function First() {
 
       {!showSplash && (
         <div className="relative min-h-screen">
-          
+
           {/* Leaf animation (background layer) */}
           <div className="fixed inset-0 z-[5] bg-red-200/10">
             <LeafScene />
