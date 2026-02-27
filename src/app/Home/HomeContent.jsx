@@ -8,65 +8,44 @@ import Awarness from "@/app/home/Awarness";
 import Research from "@/app/home/Research";
 import Medicine from "@/app/home/medicine";
 import Longivity from "@/app/home/Longivity";
+import Instalink from "@/app/Home/Instalink";
+import LongivityQuestion from "@/app/Home/LongivityQuestion";
 
 const Page = () => {
   const [show, setShow] = useState(false);
 
-useEffect(() => {
-  const interval = setInterval(() => {
-    setShow((prev) => !prev); // toggle show/hide
-  }, 5000); // every 3 seconds
-
-  return () => clearInterval(interval); // cleanup
-}, []);
 
   return (
     <div className="w-full">
+<Instalink/>
+
       {/* Hero Section */}
-      <div className="relative w-full min-h-screen overflow-hidden bg-gradient-to-r from-[#705302] via-[#f3ba1d] to-[#f5ce67] flex flex-col-reverse md:flex-row items-center">
-
+      <div className="relative mt-5 w-full min-h-screen overflow-hidden bg-gradient-to-r from-[#705302] via-[#f3ba1d] to-[#f5ce67] flex flex-col-reverse md:flex-row items-center">
         {/* 🤖 Chatbot Widget */}
-        <div className="fixed right-0 top-1/4 z-50">
-  <a
-    href="https://docs.google.com/forms/d/e/1FAIpQLSfmwH88MNXfFIdY8B5O71UAu_8DQUpoWUs1yS03Fy5FpH7Frw/viewform"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    <button
-      className={`flex items-center gap-3 bg-[#2e403b] text-white p-3 rounded-l-full shadow-xl transition-all duration-500 hover:bg-[#3a524c] ${
-        show ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
-      }`}
-    >
-      {/* GIF */}
-      <img
-        src="/Hello_Chat_Bot.gif"
-        alt="chat bot"
-        className="h-14 w-14 bg-white rounded-full p-1 shadow-md"
-      />
+ <LongivityQuestion/>
+        
 
-      {/* Text */}
-      <div className="leading-tight text-left">
-        <p className="text-sm font-semibold">
-          Any Health Related Question?
-        </p>
-        <p className="text-xs text-green-200">
-          Freely Ask 💬
-        </p>
-      </div>
-    </button>
-  </a>
-</div>
 
         {/* 📱 Social Icons Left */}
         <div className="fixed left-0 top-1/3 flex flex-col gap-3 bg-[#2f403c] p-2 rounded-r-lg z-50">
-          <a href="https://www.instagram.com/longayuu?utm_source=qr&igsh=cXIwbGRwNGFvamJt">
-            <img src="/instagram.avif" alt="Instagram" className="w-10 h-10 rounded-full" />
-          </a>
+  <a href="https://www.instagram.com/longayuu?utm_source=qr&igsh=cXIwbGRwNGFvamJt">
+    <img
+      src="/instagram.avif"
+      alt="Instagram"
+      className="w-10 h-10 rounded-full hover:scale-110 transition-transform duration-300"
+    />
+  </a>
 
-          <a href="https://youtube.com/@longayuu?si=XfSoibDAyb9Eos39">
-            <img src="/youtube.avif" alt="YouTube" className="w-10 h-10 rounded-full" />
-          </a>
-        </div>
+  <a href="https://youtube.com/@longayuu?si=XfSoibDAyb9Eos39">
+    <img
+      src="/youtube.avif"
+      alt="YouTube"
+      className="w-10 h-10 rounded-full hover:scale-110 transition-transform duration-300"
+    />
+  </a>
+</div>
+        
+        
 
         {/* 📝 Content */}
         <div className="relative z-10 w-full md:w-1/2 px-6 md:pl-12 md:pr-5 py-10">

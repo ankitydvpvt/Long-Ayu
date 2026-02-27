@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef, useEffect, useState, useCallback, useMemo } from 'react';
+import React, { useRef, useEffect, useState, useCallback } from 'react';
 import { gsap } from 'gsap';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -36,40 +36,40 @@ const MOBILE_BREAKPOINT = 768;
 // Updated card data with new color scheme
 const cardData: BentoCardProps[] = [
     {
-        color: '#2f423d',
+        color: '#d1a22d', // Yellow/gold background
         title: 'Telomere',
-        description: 'Cellular aging biomarker analysis with predictive longevity insights',
+        description: 'Click for Telomere Download',
         label: 'Telomere',
         image: '/telomere.avif',
         link: 'https://forms.gle/3MvbmNDnchWiKaLXA',
-        gradient: 'linear-gradient(145deg, #2f423d 0%, #1e2d29 100%)'
+        gradient: 'linear-gradient(145deg, #d1a22d 0%, #b3891f 100%)'
     },
     {
-        color: '#2f423d',
+        color: '#d1a22d', // Yellow/gold background
         title: 'Calcium',
-        description: 'Bone strength optimization & cellular signaling pathways',
+        description: 'Click for Calcium rich food Download',
         label: 'Calcium',
         image: '/Calcium.avif',
         link: 'https://forms.gle/RyHpk1Bdyz62arbm6',
-        gradient: 'linear-gradient(145deg, #2f423d 0%, #1e2d29 100%)'
+        gradient: 'linear-gradient(145deg, #d1a22d 0%, #b3891f 100%)'
     },
     {
-        color: '#2f423d',
+        color: '#d1a22d', // Yellow/gold background
         title: 'Digestion',
-        description: 'Advanced gut microbiome analysis and digestive health mapping',
+        description: 'Click for Digestion time Download',
         label: 'Digestion',
         image: '/digestion.avif',
         link: 'https://forms.gle/HntyKikeV8nszFpw8',
-        gradient: 'linear-gradient(145deg, #2f423d 0%, #1e2d29 100%)'
+        gradient: 'linear-gradient(145deg, #d1a22d 0%, #b3891f 100%)'
     },
     {
-        color: '#2f423d',
+        color: '#d1a22d', // Yellow/gold background
         title: 'Iron',
-        description: 'Oxygen transport efficiency and metabolic performance tracking',
+        description: 'Click for Iron rich food Download',
         label: 'Iron',
         image: '/iron.avif',
         link: 'https://forms.gle/9RZkGnuFZzmJUV4K6',
-        gradient: 'linear-gradient(145deg, #2f423d 0%, #1e2d29 100%)'
+        gradient: 'linear-gradient(145deg, #d1a22d 0%, #b3891f 100%)'
     }
 ];
 
@@ -91,7 +91,7 @@ const MagicBento: React.FC<BentoProps> = ({
 }) => {
     const isMobile = useMobileDetection();
     const sectionRef = useRef<HTMLDivElement>(null);
-    const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+    const cardsRef = useRef<(HTMLElement | null)[]>([]);
 
     useEffect(() => {
         if (!sectionRef.current || isMobile) return;
@@ -169,19 +169,19 @@ const MagicBento: React.FC<BentoProps> = ({
         switch (variant) {
             case 'glass':
                 return {
-                    background: 'rgba(47, 66, 61, 0.7)',
+                    background: 'rgba(209, 162, 45, 0.7)', // #d1a22d with transparency
                     backdropFilter: 'blur(12px)',
-                    borderColor: 'rgba(229, 176, 43, 0.2)',
+                    borderColor: 'rgba(52, 64, 61, 0.2)', // #34403d border
                 };
             case 'gradient':
                 return {
-                    background: card.gradient || `linear-gradient(145deg, #2f423d, #1e2d29)`,
-                    borderColor: 'rgba(229, 176, 43, 0.3)',
+                    background: card.gradient || `linear-gradient(145deg, #d1a22d, #b3891f)`, // Yellow/gold gradient
+                    borderColor: 'rgba(52, 64, 61, 0.3)', // #34403d border
                 };
             default:
                 return {
-                    backgroundColor: card.color || '#2f423d',
-                    borderColor: '#e5b02b',
+                    backgroundColor: card.color || '#d1a22d', // #d1a22d background
+                    borderColor: '#34403d', // #34403d border
                 };
         }
     }, [variant]);
@@ -189,12 +189,12 @@ const MagicBento: React.FC<BentoProps> = ({
     return (
         <div
             ref={sectionRef}
-            className="bento-section min-h-screen flex items-center justify-center p-6 relative overflow-hidden"
+            className="bento-section  w-full min-h-screen flex items-center justify-center p-6 relative overflow-hidden"
         >
-            {/* Animated background grid - updated color */}
-            <div className="absolute inset-0 bg-grid-pattern opacity-20" style={{ '--grid-color': '#e5b02b' } as React.CSSProperties} />
+            {/* Animated background grid - using #34403d */}
+            <div className="absolute inset-0 bg-grid-pattern opacity-20" style={{ '--grid-color': '#34403d' } as React.CSSProperties} />
 
-            {/* Floating particles - updated to gold */}
+            {/* Floating particles - using #34403d */}
             <div className="absolute inset-0 overflow-hidden">
                 {[...Array(20)].map((_, i) => (
                     <div
@@ -205,88 +205,89 @@ const MagicBento: React.FC<BentoProps> = ({
                             top: `${Math.random() * 100}%`,
                             animationDelay: `${Math.random() * 5}s`,
                             animationDuration: `${10 + Math.random() * 10}s`,
-                            backgroundColor: '#e5b02b',
-                            opacity: 0.3
+                            backgroundColor: '#34403d', // #34403d particles
+                            opacity: 0.2
                         }}
                     />
                 ))}
             </div>
 
-            <div className="grid gap-6 px-20  w-full relative z-10">
+            <div className="w-full max-w-[1400px] mx-auto relative z-10 px-4 sm:px-6 lg:px-8">
                 {/* Section header with new colors */}
-                <div className="text-center mb-8">
-                    <div className="text-4xl font-bold md:text-5xl  mb-4">
-                        <span className="bg-amber-300 text-transparent bg-clip-text">
-                            Advanced Biomarkers
+                <div className="text-center mb-12">
+                    <div className="text-4xl font-bold md:text-5xl mb-4">
+                        <span className="text-[#34403d]"> {/* #34403d text */}
+                            Instagram Youtube GiveAways
                         </span>
                     </div>
-                    <p className="text-[#e5b02b]/70 text-lg max-w-2xl mx-auto">
-                        Explore our comprehensive panel of precision health metrics
+                    <p className="text-[#34403d]/70 text-lg max-w-2xl mx-auto"> {/* #34403d text */}
+
                     </p>
                 </div>
 
-                <div className="card-responsive grid gap-6">
+                {/* Updated grid with all cards same size */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                     {cardData.map((card, index) => {
-                        const baseClassName = `card group relative flex flex-col justify-between aspect-[4/3] min-h-[240px] w-full p-6 rounded-2xl border transition-all duration-500 overflow-hidden cursor-pointer ${enableBorderGlow ? 'card--border-glow' : ''
+                        const baseClassName = `card group relative flex flex-col justify-between w-full aspect-[3/4] p-6 rounded-2xl border transition-all duration-500 overflow-hidden cursor-pointer ${enableBorderGlow ? 'card--border-glow' : ''
                             } ${variant === 'glass' ? 'backdrop-blur-xl' : ''}`;
 
                         const cardStyle = {
                             ...getCardVariantStyles(card),
-                            color: '#fff',
-                            boxShadow: `0 20px 40px -15px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(229, 176, 43, 0.1) inset`
+                            color: '#34403d', // Text color #34403d
+                            boxShadow: `0 20px 40px -15px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(52, 64, 61, 0.1) inset`
                         } as React.CSSProperties;
 
                         const content = (
                             <>
                                 {/* Full width background image */}
                                 {card.image && (
-                                    <div className="absolute inset-0 w-full h-full -z-10">
+                                    <div className="absolute inset-0 w-full h-full  -z-10">
                                         <Image
                                             src={card.image}
                                             alt={card.title || ''}
                                             fill
                                             className="object-cover transition-transform duration-700 group-hover:scale-110"
-                                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                                         />
-                                        {/* Dark overlay for better text visibility */}
-                                        <div className="absolute inset-0 bg-gradient-to-t from-[#2f423d]/80 via-[#2f423d]/40 to-transparent" />
+                                        {/* #d1a22d overlay for better text visibility */}
+                                        {/* <div className="absolute inset-0 bg-gradient-to-t from-[#d1a22d]/90 via-[#d1a22d]/50 to-[#d1a22d]/30" /> */}
                                     </div>
                                 )}
 
-                                {/* Animated gradient overlay - updated to gold */}
-                                <div className="absolute inset-0 bg-gradient-to-t from-[#e5b02b]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                                {/* Animated gradient overlay - using #34403d */}
+                                <div className="absolute inset-0 bg-gradient-to-t from-[#34403d]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-                                {/* Corner accents - updated to gold */}
-                                <div className="absolute top-4 left-4 w-12 h-12 border-t-2 border-l-2 border-[#e5b02b]/50 rounded-tl-xl" />
-                                <div className="absolute bottom-4 right-4 w-12 h-12 border-b-2 border-r-2 border-[#e5b02b]/50 rounded-br-xl" />
+                                {/* Corner accents - using #34403d */}
+                                <div className="absolute top-4 left-4 w-12 h-12 border-t-2 border-l-2 border-[#34403d]/30 rounded-tl-xl" />
+                                <div className="absolute bottom-4 right-4 w-12 h-12 border-b-2 border-r-2 border-[#34403d]/30 rounded-br-xl" />
 
                                 {/* Shine effect */}
                                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-                                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+                                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
                                 </div>
 
                                 <div className="card__header flex justify-between items-start gap-3 relative z-10">
-                                    <span className="card__label text-sm font-medium px-3 py-1.5 rounded-full bg-[#2f423d]/50 backdrop-blur-sm border border-[#e5b02b]/30 text-[#e5b02b]">
+                                    <span className="card__label text-sm font-medium px-3 py-1.5 rounded-full bg-[#34403d]/10 backdrop-blur-sm border border-[#34403d]/30 text-[#34403d]">
                                         {card.label}
                                     </span>
-                                    <div className="w-8 h-8 rounded-full bg-[#e5b02b]/10 flex items-center justify-center border border-[#e5b02b]/30">
-                                        <svg className="w-4 h-4 text-[#e5b02b]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <div className="w-8 h-8 rounded-full bg-[#34403d]/10 flex items-center justify-center border border-[#34403d]/30">
+                                        <svg className="w-4 h-4 text-[#34403d]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                                         </svg>
                                     </div>
                                 </div>
 
                                 <div className="card__content relative z-10">
-                                    <h3 className={`card__title font-light text-xl mb-2 text-white ${textAutoHide ? 'line-clamp-1' : ''}`}>
+                                    <h3 className={`card__title  text-xl mb-2 text-black font-bold  ${textAutoHide ? 'line-clamp-1' : ''}`}>
                                         {card.title}
                                     </h3>
 
-                                    <p className={`card__description text-sm text-[#e5b02b]/80 leading-relaxed ${textAutoHide ? 'line-clamp-2' : ''}`}>
+                                    <p className={`card__description text-sm text-black bg-[#cba558]/70 text-center rounded-full leading-relaxed ${textAutoHide ? 'line-clamp-2' : ''}`}>
                                         {card.description}
                                     </p>
 
-                                    {/* Interactive indicator - updated to gold */}
-                                    <div className="mt-4 flex items-center text-xs text-[#e5b02b] opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    {/* Interactive indicator - using #34403d */}
+                                    <div className="mt-4 flex items-center text-xs text-[#34403d] opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                         <span>Learn more</span>
                                         <svg className="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -304,7 +305,7 @@ const MagicBento: React.FC<BentoProps> = ({
                                 className={baseClassName}
                                 style={cardStyle}
                                 ref={(el) => {
-                                    if (el) cardsRef.current[index] = el;
+                                    cardsRef.current[index] = el;
                                 }}
                             >
                                 {content}
@@ -315,7 +316,7 @@ const MagicBento: React.FC<BentoProps> = ({
                                 className={baseClassName}
                                 style={cardStyle}
                                 ref={(el) => {
-                                    if (el) cardsRef.current[index] = el;
+                                    cardsRef.current[index] = el;
                                 }}
                             >
                                 {content}
@@ -328,80 +329,30 @@ const MagicBento: React.FC<BentoProps> = ({
             <style>
                 {`
             .bento-section {
-            background: linear-gradient(135deg, #1a2a25 0%, #2f423d 100%);
-            }
+  background: linear-gradient(
+    135deg,
+    #705302 0%,
+    #f3ba1d 50%,
+    #f5ce67 100%
+  );
+}
 
             .bg-grid-pattern {
             background-image: 
-                linear-gradient(rgba(229, 176, 43, 0.1) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(229, 176, 43, 0.1) 1px, transparent 1px);
+                linear-gradient(rgba(244, 190, 59, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(244, 190, 59, 0.1) 1px, transparent 1px);
             background-size: 50px 50px;
-            }
-
-            .card-responsive {
-            display: grid;
-            grid-template-columns: repeat(1, 1fr);
-            }
-
-            @media (min-width: 640px) {
-            .card-responsive {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            }
-
-            @media (min-width: 1024px) {
-            .card-responsive {
-                grid-template-columns: repeat(4, 1fr);
-            }
-
-            .card-responsive .card:nth-child(3) {
-                grid-column: span 2;
-                grid-row: span 2;
-                aspect-ratio: 2/1.5;
-            }
-
-            .card-responsive .card:nth-child(4) {
-                grid-column: 1 / span 2;
-                grid-row: 2 / span 2;
-                aspect-ratio: 2/1.5;
-            }
             }
 
             .card {
             transform-style: preserve-3d;
             will-change: transform;
+            aspect-ratio: 3/4;
             }
 
-            .card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: inherit;
-            padding: 1px;
-            background: linear-gradient(145deg, rgba(229, 176, 43, 0.5), rgba(47, 66, 61, 0.5));
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-            pointer-events: none;
-            }
 
             .card:hover::before {
             opacity: 1;
-            }
-
-            .card--border-glow {
-            box-shadow: 
-                0 10px 30px -10px rgba(229, 176, 43, 0.3),
-                0 0 0 1px rgba(229, 176, 43, 0.2) inset;
-            }
-
-            .card--border-glow:hover {
-            box-shadow: 
-                0 20px 40px -10px rgba(229, 176, 43, 0.5),
-                0 0 0 2px rgba(229, 176, 43, 0.3) inset;
             }
 
             .line-clamp-1 {

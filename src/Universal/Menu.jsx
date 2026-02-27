@@ -21,8 +21,8 @@ export default function HomePage() {
     { name: "Home", link: "/" },
     // { name: "About", link: "/about" },
     // { name: "Services", link: "/services" },
-    { name: "Contact", link: "/contact" },
-    { name: "InstaLinks", link: "/instalink" },
+    { name: "Contact", link: "/Contact" },
+    // { name: "InstaLinks", link: "/instalink" },
   ];
 
   return (
